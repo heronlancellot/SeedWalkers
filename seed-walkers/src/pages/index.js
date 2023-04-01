@@ -1,8 +1,4 @@
 import Head from 'next/head'
-import { Inter } from '@next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
-
 
 export default function Home() {
   
@@ -12,7 +8,17 @@ var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/fitness/v1/r
 var SCOPES = 'https://www.googleapis.com/auth/fitness.activity.read';
 
 function handleClientLoad() {
-  console.log('teste');
+    gapi.client.init({
+        apiKey: API_KEY,
+        discoveryDocs: DISCOVERY_DOCS,
+        clientId: CLIENT_ID,
+        scope: SCOPES
+    }).then(function () {
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+    }, function (error) {
+        console.log(JSON.stringify(error, null, 2));
+    });
 }
 
 function updateSigninStatus(isSignedIn) {
@@ -43,7 +49,7 @@ function makeRequest() {
         <link rel="icon" href="/favicon.ico" />
       </Head> 
 
-      <button onclick={handleClientLoad}>Sign in with Google</button>      
+      <button onClick={handleClientLoad}>Sign in with Google</button>      
 
     </>
   )
