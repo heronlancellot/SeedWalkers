@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,6 +23,7 @@ function handleClientLoad() {
     }, function (error) {
         console.log(JSON.stringify(error, null, 2));
     });
+    console.log('chamou a função');
 }
 
 function updateSigninStatus(isSignedIn) {
@@ -55,7 +54,8 @@ function makeRequest() {
         <link rel="icon" href="/favicon.ico" />
       </Head> 
 
-      <button onclick={handleClientLoad()}>Sign in with Google</button>      
+      <button onclick={handleClientLoad()}>Sign in with Google</button>     
+ 
 
     </>
   )
