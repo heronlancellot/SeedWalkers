@@ -12,17 +12,7 @@ var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/fitness/v1/r
 var SCOPES = 'https://www.googleapis.com/auth/fitness.activity.read';
 
 function handleClientLoad() {
-    gapi.client.init({
-        apiKey: API_KEY,
-        discoveryDocs: DISCOVERY_DOCS,
-        clientId: CLIENT_ID,
-        scope: SCOPES
-    }).then(function () {
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    }, function (error) {
-        console.log(JSON.stringify(error, null, 2));
-    });
+  console.log('teste');
 }
 
 function updateSigninStatus(isSignedIn) {
