@@ -9,6 +9,8 @@ export default function Home() {
 
   return (
     <>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div id="g_id_onload"
         data-client_id="905694888986-jln4ifm94rqi57ktsekiiqqnllsh4rtm.apps.googleusercontent.com"
         data-context="signin"
