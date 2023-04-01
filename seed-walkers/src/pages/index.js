@@ -55,7 +55,7 @@ function makeRequest() {
         <link rel="icon" href="/favicon.ico" />
       </Head> 
 
-      <button onclick="handleClientLoad()">Sign in with Google</button>      
+      <button onclick={handleClientLoad()}>Sign in with Google</button>      
 
     </>
   )
