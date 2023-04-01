@@ -8,7 +8,7 @@ export default function Home() {
   
 var CLIENT_ID = '905694888986-jln4ifm94rqi57ktsekiiqqnllsh4rtm.apps.googleusercontent.com'; // Insira o ID do cliente aqui
 var API_KEY = 'AIzaSyAiJgKXvvSW4mAmX2_4b-Xb3Ba07Nq7YxA'; // Insira a chave de API aqui
-var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest"];
+var DISCOVERY_DOCS = "https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest";
 var SCOPES = 'https://www.googleapis.com/auth/fitness.activity.read';
 
 function handleClientLoad() {
