@@ -1,0 +1,11 @@
+.nft__container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-primary);
+    padding: 2rem;
+}
+
+.nft__container_image img { 
+    display: 
+}
+

@@ -1,33 +1,41 @@
-import Head from 'next/head'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import NFT from '../components/NFT'
+import Walker from '../components/Walker'
+
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
+import { Web3Modal } from '@web3modal/react'
+import { configureChains, createClient, WagmiConfig } from 'wagmi'
+import { celoAlfajores } from 'wagmi/chains'
+
+import { Web3Button } from '@web3modal/react'
+import { useAccount, useContract, useSigner } from 'wagmi'
+
 
 export default function Home() {
+
+  const chains = [ celoAlfajores ]
+  const projectId = '8f22bc8eb0ab9a41c73c2d694fe47775'
   
-// var CLIENT_ID = '905694888986-jln4ifm94rqi57ktsekiiqqnllsh4rtm.apps.googleusercontent.com'; // Insira o ID do cliente aqui
-// var API_KEY = 'AIzaSyAiJgKXvvSW4mAmX2_4b-Xb3Ba07Nq7YxA'; // Insira a chave de API aqui
-// var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest"];
-// var SCOPES = 'https://www.googleapis.com/auth/fitness.activity.read';
+  const { provider } = configureChains(chains, [w3mProvider({ projectId })])
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors: w3mConnectors({ projectId, version: 1, chains }),
+    provider
+  })
+  const ethereumClient = new EthereumClient(wagmiClient, chains)
 
   return (
     <>
 
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload"
-        data-client_id="905694888986-jln4ifm94rqi57ktsekiiqqnllsh4rtm.apps.googleusercontent.com"
-        data-context="signin"
-        data-ux_mode="popup"
-        data-login_uri="https://seed-walkers-dapp.vercel.app"
-        data-auto_prompt="false">
-    </div>
-
-    <div class="g_id_signin"
-        data-type="standard"
-        data-shape="rectangular"
-        data-theme="outline"
-        data-text="signin_with."
-        data-size="large"
-        data-logo_alignment="left">
-    </div>
+    <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />    
+    <Header/>
+    <Walker/>
+    <NFT/>
+    <Footer/>
 
     </>
   )
 }
+
+

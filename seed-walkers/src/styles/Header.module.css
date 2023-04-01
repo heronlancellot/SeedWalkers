@@ -1,0 +1,10 @@
+.header__container {
+    display: flex;
+    justify-content: right;
+  }
+  
+
+.header__container_metamask {
+  padding: 1rem;
+  margin-right: 10rem;
+}
